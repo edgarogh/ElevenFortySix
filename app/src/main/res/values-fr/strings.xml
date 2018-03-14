@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="settings">Options</string>
+    <string name="add_shortcut">Ajouter un raccouci</string>
+    <string name="add_shortcut_info">Si vous changez l\'heure, le nom de l\'application ne changera pas à cause de limitations système. Cependant, vous pouvez appuyer sur le bouton ci-dessous pour créer un raccourci avec le nom correct sur l\'écran d\'accueil.</string>
+    <string name="set_hour">Définir l\'heure</string>
+    <string name="time">Heure</string>
+    <string name="theme">Thème</string>
+    <string name="timezones">Fuseaux horaires</string>
+    <string name="not_implemented">(non implémenté)</string>
+    <string name="close">Fermer</string>
+    <string name="change_time">Changer l\'heure</string>
+    <string name="about">À propos</string>
+    <string name="view_on_github">Voir sur GitHub</string>
+    <string name="version">Version</string>
+    <string name="licenses">Licenses</string>
+    <string name="libraries">Bibliothèques</string>
+    <string name="author">Programmeur</string>
+    <string name="contributor">Contributeur</string>
+
+    <string-array name="sectors">
+        <item>Londres - Anadyr</item>
+        <item>Paris - Auckland - Alofi</item>
+        <item>Le Caire - Kiritimati - Honolulu</item>
+        <item>Moscou - Anchorage</item>
+        <item>Dubai - Los Angeles</item>
+        <item>Tachkent - Calgary</item>
+        <item>Dhaka - Mexico</item>
+        <item>Jakarta - New York</item>
+        <item>Pékin - Caracas</item>
+        <item>Tokyo - Buenos Aires</item>
+        <item>Brisbane - King Edward Point</item>
+        <item>Melbourne - Praia</item>
+    </string-array>
+
+</resources>

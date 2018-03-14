@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="category_time"
+        android:title="@string/time">
+
+        <fr.mranima.elevenfortysix.preferences.TimePickerPreference
+            android:key="@string/pref_time"
+            android:title="@string/change_time"
+            android:icon="@drawable/ic_clock"/>
+
+        <fr.mranima.elevenfortysix.preferences.CreateShortcutPreference
+            android:key="pref_static_field_key"
+            android:selectable="false"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/timezones"
+        android:key="category_timezones" />
+
+    <PreferenceCategory
+        android:title="@string/theme">
+
+        <com.jrummyapps.android.colorpicker.ColorPreference
+            android:title="Clock border color"
+            android:defaultValue="@color/colorAccent"
+            android:key="@string/pref_color_border" />
+
+        <com.jrummyapps.android.colorpicker.ColorPreference
+            android:title="Minutes hand color"
+            android:defaultValue="@color/handMinutes"
+            android:key="@string/pref_color_hand_minutes" />
+
+        <com.jrummyapps.android.colorpicker.ColorPreference
+            android:title="Hour hand color"
+            android:defaultValue="@color/handHour"
+            android:key="@string/pref_color_hand_hour" />
+
+        <com.jrummyapps.android.colorpicker.ColorPreference
+            android:title="Text color"
+            android:defaultValue="@color/clockText"
+            android:key="@string/pref_color_text" />
+
+        <com.jrummyapps.android.colorpicker.ColorPreference
+            android:title="Trucs"
+            android:defaultValue="@color/clockText"
+            android:key="@string/pref_color_markers" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/about">
+
+        <Preference
+            android:title="@string/view_on_github"
+            android:icon="@drawable/ic_github_circle"
+            android:persistent="false">
+
+            <intent android:action="android.intent.action.VIEW"
+                android:data="@string/app_repo_url"/>
+
+        </Preference>
+
+        <Preference
+            android:title="@string/about"
+            android:icon="@drawable/ic_info"
+            android:persistent="false">
+
+            <intent
+                android:targetPackage="fr.mranima.elevenfortysix"
+                android:targetClass="fr.mranima.elevenfortysix.AboutActivity" />
+
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

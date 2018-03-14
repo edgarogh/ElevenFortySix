@@ -1,0 +1,19 @@
+================================================================
+| Timezones that should be displayed on the same clock "slice" |
+=================================================================
+ The timezones have the same time, if we ommit AM/PM
+
+UTC(0) & UTC+12
+UTC+1  & UTC+13 & UTC-11
+UTC+2  & UTC+14 & UTC-10
+UTC+3  & UTC-9
+UTC+4  & UTC-8
+UTC+5  & UTC-7
+UTC+6  & UTC-6
+UTC+7  & UTC-5
+UTC+8  & UTC-4
+UTC+9  & UTC-3
+UTC+10 & UTC-2
+UTC+11 & UTC-1
+
+Total: 12 => We're good !
