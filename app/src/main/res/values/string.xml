@@ -3,33 +3,34 @@
 
     <string name="app_name" translatable="false">11:46</string>
     <string name="app_repo_url" translatable="false">https://github.com/MrAnima/ElevenFortySix</string>
+    <string name="app_comments_url" translatable="false">https://github.com/MrAnima/ElevenFortySix/issues/new</string>
 
     <string name="license_mdi" translatable="false">
-        "Copyright © 2014, Austin Andrews (http://materialdesignicons.com/),"
-        "with Reserved Font Name Material Design Icons."
-        "\nCopyright © 2014, Google (http://www.google.com/design/)"
-        "uses the license at https://github.com/google/material-design-icons/blob/master/LICENSE"
-        "\n"
-        "\nThis Font Software is licensed under the SIL Open Font License, Version 1.1."
-        "This license is copied below, and is also available with a FAQ at:"
-        "http://scripts.sil.org/OFL"
+        "Copyright © 2014, Austin Andrews (http://materialdesignicons.com/),
+        with Reserved Font Name Material Design Icons.
+        \nCopyright © 2014, Google (http://www.google.com/design/)
+        uses the license at https://github.com/google/material-design-icons/blob/master/LICENSE
+        \n
+        \nThis Font Software is licensed under the SIL Open Font License, Version 1.1.
+        This license is copied below, and is also available with a FAQ at:
+        http://scripts.sil.org/OFL"
     </string>
 
     <string name="license_colorpicker" translatable="false">
-        "Copyright 2016 Jared Rummler"
-        "\nCopyright 2015 Daniel Nilsson"
-        "\n"
-        "\nLicensed under the Apache License, Version 2.0 (the "License");"
-        "you may not use this file except in compliance with the License."
-        "\nYou may obtain a copy of the License at"
-        "\n"
-        "\n    http://www.apache.org/licenses/LICENSE-2.0"
-        "\n"
-        "\nUnless required by applicable law or agreed to in writing, software"
-        "distributed under the License is distributed on an "AS IS" BASIS,"
-        "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied."
-        "\nSee the License for the specific language governing permissions and"
-        "limitations under the License."
+        "Copyright 2016 Jared Rummler
+        \nCopyright 2015 Daniel Nilsson
+        \n
+        \nLicensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        \nYou may obtain a copy of the License at
+        \n
+        \n    http://www.apache.org/licenses/LICENSE-2.0
+        \n
+        \nUnless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        \nSee the License for the specific language governing permissions and
+        limitations under the License."
     </string>
 
     <string name="app_btc_addr" translatable="false">157Q5jFSvXubjDHGvKXB27bgW376s4QkRf</string>
