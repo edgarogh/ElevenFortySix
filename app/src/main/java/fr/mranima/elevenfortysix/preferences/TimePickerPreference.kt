@@ -9,7 +9,7 @@ import android.widget.TimePicker
 
 class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPreference(context, attrs) {
 
-    private var picker: TimePicker? = null
+    private val picker: TimePicker = TimePicker(context).apply { setIs24HourView(true) }
 
     private val savedTime: Time
         get() = Time(getPersistedInt(Time(11, 46).time))
@@ -18,19 +18,18 @@ class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPrefer
         setTime(savedTime)
     }
 
-    override fun onCreateDialogView(): View {
-        picker = TimePicker(context)
-        val picker = this.picker
-        picker!!.setIs24HourView(true)
+    override fun onCreateDialogView(): View = picker
+
+    override fun onBindDialogView(view: View?) {
+        super.onBindDialogView(view)
         val time = savedTime
         picker.currentHour = time.hour
         picker.currentMinute = time.minute
-        return picker
     }
 
     override fun onDialogClosed(positiveResult: Boolean) {
         if (positiveResult) {
-            val t = Time(picker!!.currentHour, picker!!.currentMinute)
+            val t = Time(picker.currentHour, picker.currentMinute)
             persistInt(t.time)
             setTime(t)
         }

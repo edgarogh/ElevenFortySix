@@ -20,6 +20,8 @@
     <string name="bitcoin" translatable="false">Bitcoin</string>
     <string name="message_copied">Copied !</string>
     <string name="comments">Comments</string>
+    <string name="dst_summer">Summer time</string>
+    <string name="dst_winter">Winter time</string>
 
     <string-array name="sectors">
         <item>London - Anadyr</item>
@@ -34,6 +36,21 @@
         <item>Tokyo - Buenos Aires</item>
         <item>Brisbane - King Edward Point</item>
         <item>Melbourne - Praia</item>
+    </string-array>
+
+    <string-array name="sectors_dst">
+        <item>Dakar - Auckland</item>
+        <item>London - Alofi</item>
+        <item>Brussels - Kiritimati - Honolulu</item>
+        <item>Moscow - Adak</item>
+        <item>Dubai - Anchorage</item>
+        <item>Tashkent - Los Angeles</item>
+        <item>Dhaka - Calgary</item>
+        <item>Jakarta - Mexico City</item>
+        <item>Beijing - Caracas</item>
+        <item>Tokyo - Buenos Aires</item>
+        <item>Brisbane - King Edward Point</item>
+        <item>Noumea - Praia</item>
     </string-array>
 
 </resources>

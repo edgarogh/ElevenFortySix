@@ -30,6 +30,7 @@ class Clock : View {
     private val hour = 11
     private val minute = 46
 
+    private var dst: Boolean = false
 
     constructor(context: Context) : super(context)
 
@@ -38,10 +39,10 @@ class Clock : View {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     init {
-        loadPaint()
+        update()
     }
 
-    fun loadPaint() {
+    fun update() {
         PAINT_OUTER_CIRCLE.color = getColor(R.color.colorAccent, R.string.pref_color_border)
         PAINT_OUTER_CIRCLE.isAntiAlias = true
         PAINT_OUTER_CIRCLE.setShadowLayer(12f, 0f, 0f, Color.GRAY)
@@ -65,9 +66,12 @@ class Clock : View {
         PAINT_MARKERS.color = getColor(R.color.clockText, R.string.pref_color_markers)
         PAINT_MARKERS.isAntiAlias = true
         PAINT_MARKERS.strokeWidth = 8f
+
+        dst = PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(resources.getString(R.string.pref_dst), dst)
     }
 
-    fun update() {
+    fun redraw() {
         invalidate()
     }
 
@@ -91,9 +95,9 @@ class Clock : View {
         }
 
         // Hands
-        val c = Calendar.getInstance()
 
         // Minute hand
+        val c = Calendar.getInstance()
         // Number of seconds corresponding to 0-60 minutes (0-3600)
         val seconds = mod(((c.get(GregorianCalendar.MINUTE) - minute) * 60 + c.get(GregorianCalendar.SECOND)).toFloat(), 3600f)
 
@@ -113,7 +117,7 @@ class Clock : View {
 
         // Write timezones
         var index = -1
-        for (sector in ClockSectors.getSectorNames(context)) {
+        for (sector in ClockSectors.getSectorNames(context, dst)) {
             index++
             val angle = index * -30
             val txtX = (cX + 0.7 * radius.toDouble() * Math.sin(Math.toRadians((-angle + 180f).toDouble()))).toInt()

@@ -38,6 +38,8 @@
     <string name="pref_time" translatable="false">TIME</string>
     <string name="pref_sector" translatable="false">SECTOR</string>
 
+    <string name="pref_dst" translatable="false">DST</string>
+
     <string name="pref_color_border" translatable="false">COLOR_BORDER</string>
     <string name="pref_color_hand_minutes" translatable="false">COLOR_HAND_MINUTES</string>
     <string name="pref_color_hand_hour" translatable="false">COLOR_HAND_HOUR</string>

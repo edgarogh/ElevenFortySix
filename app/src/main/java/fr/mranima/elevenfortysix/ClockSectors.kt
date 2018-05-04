@@ -27,22 +27,24 @@ object ClockSectors {
         return sectors
     }
 
-    fun getDefaultNameForSector(ctx: Context, index: Int): String {
+    fun getDefaultNameForSector(ctx: Context, index: Int, dst: Boolean): String {
         if (index >= 12 || index < 0)
             throw IndexOutOfBoundsException("Sector name too high: $index")
 
-        return ctx.resources.getStringArray(R.array.sectors)[index]
+        val array = if (dst) R.array.sectors_dst else R.array.sectors
+        return ctx.resources.getStringArray(array)[index]
     }
 
-    fun getSectorNames(ctx: Context): Array<String> {
+    fun getSectorNames(ctx: Context, dst: Boolean): Array<String> {
         val s = arrayOfNulls<String>(12)
         s.fill("")
 
         for (i in s.indices) {
+            val key = ctx.getString(R.string.pref_sector) + i + if (dst) "_SUMMER" else ""
             val name = PreferenceManager.getDefaultSharedPreferences(ctx)
-                    .getString(ctx.getString(R.string.pref_sector) + i, null)
+                    .getString(key, null)
 
-            s[i] = name ?: getDefaultNameForSector(ctx, i)
+            s[i] = name ?: getDefaultNameForSector(ctx, i, dst)
         }
         return s.filterNotNull().toTypedArray()
     }

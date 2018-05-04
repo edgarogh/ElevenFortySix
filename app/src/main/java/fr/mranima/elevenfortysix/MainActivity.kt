@@ -80,16 +80,21 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        clock.loadPaint()
+        clock.redraw()
         timer = Timer()
         timer?.schedule(1000) {
-            runOnUiThread { clock.update() }
+            runOnUiThread { clock.redraw() }
         }
     }
 
     override fun onStop() {
         timer?.cancel()
         super.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        clock.update()
     }
 
 }

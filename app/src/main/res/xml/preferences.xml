@@ -19,7 +19,14 @@
 
     <PreferenceCategory
         android:title="@string/timezones"
-        android:key="category_timezones" />
+        android:key="category_timezones">
+
+        <SwitchPreference
+            android:title="@string/dst_summer"
+            android:key="@string/pref_dst"
+            android:icon="@drawable/ic_sun" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/theme">
@@ -45,7 +52,7 @@
             android:key="@string/pref_color_text" />
 
         <com.jrummyapps.android.colorpicker.ColorPreference
-            android:title="Trucs"
+            android:title="Markers"
             android:defaultValue="@color/clockText"
             android:key="@string/pref_color_markers" />
 

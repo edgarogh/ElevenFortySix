@@ -18,8 +18,10 @@
     <string name="libraries">Bibliothèques</string>
     <string name="author">Programmeur</string>
     <string name="contributor">Contributeur</string>
-    <string name="message_copied">" Copié !"</string>
+    <string name="message_copied">Copié !</string>
     <string name="comments">Commentaires</string>
+    <string name="dst_summer">Heure d\'été</string>
+    <string name="dst_winter">Heure d\'hiver</string>
 
     <string-array name="sectors">
         <item>Londres - Anadyr</item>
@@ -34,6 +36,21 @@
         <item>Tokyo - Buenos Aires</item>
         <item>Brisbane - King Edward Point</item>
         <item>Melbourne - Praia</item>
+    </string-array>
+
+    <string-array name="sectors_dst">
+        <item>Dakar - Auckland</item>
+        <item>Londres - Alofi</item>
+        <item>Paris - Kiritimati - Honolulu</item>
+        <item>Moscou - Adak</item>
+        <item>Dubai - Anchorage</item>
+        <item>Tachkent - Los Angeles</item>
+        <item>Dhaka - Calgary</item>
+        <item>Jakarta - Mexico</item>
+        <item>Pékin - Caracas</item>
+        <item>Tokyo - Buenos Aires</item>
+        <item>Brisbane - King Edward Point</item>
+        <item>Noumea - Praia</item>
     </string-array>
 
 </resources>
