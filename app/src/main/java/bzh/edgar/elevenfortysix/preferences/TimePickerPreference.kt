@@ -1,15 +1,13 @@
 package bzh.edgar.elevenfortysix.preferences
 
 import android.content.Context
-import android.preference.DialogPreference
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.TimePicker
+import androidx.preference.DialogPreference
+import androidx.preference.PreferenceDialogFragmentCompat
 
-class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPreference(context, attrs) {
-
-    private val picker: TimePicker = TimePicker(context).apply { setIs24HourView(true) }
+class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPreference(context, attrs), DialogPreferenceDialogHolder {
 
     private val savedTime: Time
         get() = Time(getPersistedInt(Time(11, 46).time))
@@ -18,30 +16,13 @@ class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPrefer
         setTime(savedTime)
     }
 
-    override fun onCreateDialogView(): View = picker
-
-    override fun onBindDialogView(view: View?) {
-        super.onBindDialogView(view)
-        val time = savedTime
-        picker.currentHour = time.hour
-        picker.currentMinute = time.minute
-    }
-
-    override fun onDialogClosed(positiveResult: Boolean) {
-        if (positiveResult) {
-            val t = Time(picker.currentHour, picker.currentMinute)
-            persistInt(t.time)
-            setTime(t)
-        }
-    }
-
     private fun setTime(time: Time) {
-        Log.d("TimePicker", "Set time" + time.toString())
         summary = time.toString()
     }
 
-    class Time {
+    override fun newDialog(): PreferenceDialogFragmentCompat = Dialog(this)
 
+    private class Time {
         var time: Int = 0
             internal set
 
@@ -59,7 +40,28 @@ class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPrefer
             this.time = 60 * hour + minute
         }
 
-        override fun toString(): String = hour.toString() + ":" + minute
+        override fun toString(): String = "$hour:$minute"
+    }
+
+    class Dialog(private val preference: TimePickerPreference) : PreferenceDialogFragmentCompat() {
+        private val picker by lazy { TimePicker(context).apply { setIs24HourView(true) } }
+
+        override fun onCreateDialogView(context: Context?) = picker
+
+        override fun onBindDialogView(view: View?) {
+            super.onBindDialogView(view)
+            val time = preference.savedTime
+            picker.currentHour = time.hour
+            picker.currentMinute = time.minute
+        }
+
+        override fun onDialogClosed(positiveResult: Boolean) {
+            if (positiveResult) {
+                val t = Time(picker.currentHour, picker.currentMinute)
+                preference.persistInt(t.time)
+                preference.setTime(t)
+            }
+        }
     }
 
 }

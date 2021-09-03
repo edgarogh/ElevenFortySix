@@ -5,15 +5,14 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.ActionMenuView
-import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
-import bzh.edgar.elevenfortysix.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ActionMenuView
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {

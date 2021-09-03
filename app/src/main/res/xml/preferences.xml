@@ -31,27 +31,27 @@
     <PreferenceCategory
         android:title="@string/theme">
 
-        <com.jrummyapps.android.colorpicker.ColorPreference
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:title="Clock border color"
             android:defaultValue="@color/colorAccent"
             android:key="@string/pref_color_border" />
 
-        <com.jrummyapps.android.colorpicker.ColorPreference
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:title="Minutes hand color"
             android:defaultValue="@color/handMinutes"
             android:key="@string/pref_color_hand_minutes" />
 
-        <com.jrummyapps.android.colorpicker.ColorPreference
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:title="Hour hand color"
             android:defaultValue="@color/handHour"
             android:key="@string/pref_color_hand_hour" />
 
-        <com.jrummyapps.android.colorpicker.ColorPreference
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:title="Text color"
             android:defaultValue="@color/clockText"
             android:key="@string/pref_color_text" />
 
-        <com.jrummyapps.android.colorpicker.ColorPreference
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:title="Markers"
             android:defaultValue="@color/clockText"
             android:key="@string/pref_color_markers" />

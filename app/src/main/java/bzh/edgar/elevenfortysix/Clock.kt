@@ -4,16 +4,18 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.preference.PreferenceManager
+import android.util.AttributeSet
+import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import android.util.AttributeSet
-import android.view.View
-import bzh.edgar.elevenfortysix.R
+import androidx.preference.PreferenceManager
 import org.jetbrains.annotations.Contract
 import java.util.*
+import kotlin.math.cos
+import kotlin.math.min
+import kotlin.math.sin
 
 class Clock : View {
 
@@ -47,7 +49,7 @@ class Clock : View {
         PAINT_OUTER_CIRCLE.color = getColor(R.color.colorAccent, R.string.pref_color_border)
         PAINT_OUTER_CIRCLE.isAntiAlias = true
         PAINT_OUTER_CIRCLE.setShadowLayer(12f, 0f, 0f, Color.GRAY)
-        setLayerType(View.LAYER_TYPE_SOFTWARE, PAINT_OUTER_CIRCLE)
+        setLayerType(LAYER_TYPE_SOFTWARE, PAINT_OUTER_CIRCLE)
 
         PAINT_INNER_CIRCLE.color = Color.WHITE
         PAINT_INNER_CIRCLE.isAntiAlias = true
@@ -78,7 +80,7 @@ class Clock : View {
 
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
-        val radius = Math.min(width, height) / 2 - 2 * getDimen(R.dimen.clock_padding)
+        val radius = min(width, height) / 2 - 2 * getDimen(R.dimen.clock_padding)
         val cX = width / 2
         val cY = height / 2
 
@@ -87,10 +89,10 @@ class Clock : View {
 
         var i = 0
         while (i < 360) {
-            val bx = (cX + radius * Math.sin(Math.toRadians(i.toDouble()))).toInt()
-            val by = (cY + radius * Math.cos(Math.toRadians(i.toDouble()))).toInt()
-            val x = (cX + 0.9 * radius.toDouble() * Math.sin(Math.toRadians(i.toDouble()))).toInt()
-            val y = (cY + 0.9 * radius.toDouble() * Math.cos(Math.toRadians(i.toDouble()))).toInt()
+            val bx = (cX + radius * sin(Math.toRadians(i.toDouble()))).toInt()
+            val by = (cY + radius * cos(Math.toRadians(i.toDouble()))).toInt()
+            val x = (cX + 0.9 * radius.toDouble() * sin(Math.toRadians(i.toDouble()))).toInt()
+            val y = (cY + 0.9 * radius.toDouble() * cos(Math.toRadians(i.toDouble()))).toInt()
             canvas.drawLine(bx.toFloat(), by.toFloat(), x.toFloat(), y.toFloat(), PAINT_MARKERS)
             i += 30
         }
@@ -102,8 +104,8 @@ class Clock : View {
         // Number of seconds corresponding to 0-60 minutes (0-3600)
         val seconds = mod(((c.get(GregorianCalendar.MINUTE) - minute) * 60 + c.get(GregorianCalendar.SECOND)).toFloat(), 3600f)
 
-        val minuteX = (cX + radius * Math.sin(Math.toRadians((-(seconds / 10) + 180f).toDouble()))).toInt()
-        val minuteY = (cY + radius * Math.cos(Math.toRadians((-(seconds / 10) + 180f).toDouble()))).toInt()
+        val minuteX = (cX + radius * sin(Math.toRadians((-(seconds / 10) + 180f).toDouble()))).toInt()
+        val minuteY = (cY + radius * cos(Math.toRadians((-(seconds / 10) + 180f).toDouble()))).toInt()
         canvas.drawLine(cX.toFloat(), cY.toFloat(), minuteX.toFloat(), minuteY.toFloat(), PAINT_HAND_MINUTES)
 
         // Hour hand
@@ -112,8 +114,8 @@ class Clock : View {
         val min = (c0.get(GregorianCalendar.MINUTE) - minute).toFloat()
         val minutes = mod((c0.get(GregorianCalendar.HOUR).toFloat() - hour) * 60f + min, 720f)
 
-        val hourX = (cX + radius * 0.8 * Math.sin(Math.toRadians((-(minutes / 2) + 180f).toDouble()))).toInt()
-        val hourY = (cY + radius * 0.8 * Math.cos(Math.toRadians((-(minutes / 2) + 180f).toDouble()))).toInt()
+        val hourX = (cX + radius * 0.8 * sin(Math.toRadians((-(minutes / 2) + 180f).toDouble()))).toInt()
+        val hourY = (cY + radius * 0.8 * cos(Math.toRadians((-(minutes / 2) + 180f).toDouble()))).toInt()
         canvas.drawLine(cX.toFloat(), cY.toFloat(), hourX.toFloat(), hourY.toFloat(), PAINT_HAND_HOUR)
 
         // Write timezones
@@ -121,8 +123,8 @@ class Clock : View {
         for (sector in ClockSectors.getSectorNames(context, dst)) {
             index++
             val angle = index * -30
-            val txtX = (cX + 0.7 * radius.toDouble() * Math.sin(Math.toRadians((-angle + 180f).toDouble()))).toInt()
-            val txtY = (cY + 0.7 * radius.toDouble() * Math.cos(Math.toRadians((-angle + 180f).toDouble()))).toInt()
+            val txtX = (cX + 0.7 * radius.toDouble() * sin(Math.toRadians((-angle + 180f).toDouble()))).toInt()
+            val txtY = (cY + 0.7 * radius.toDouble() * cos(Math.toRadians((-angle + 180f).toDouble()))).toInt()
             canvas.drawTextCentered(sector, txtX, txtY, PAINT_TEXT)
         }
     }

@@ -18,7 +18,6 @@
     <string name="author">Author</string>
     <string name="contributor">Contributor</string>
     <string name="paypal" translatable="false">PayPal</string>
-    <string name="message_copied">Copied !</string>
     <string name="comments">Comments</string>
     <string name="dst_summer">Summer time</string>
     <string name="dst_winter">Winter time</string>

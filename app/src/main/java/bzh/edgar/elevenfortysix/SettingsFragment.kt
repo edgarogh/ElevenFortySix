@@ -2,21 +2,22 @@ package bzh.edgar.elevenfortysix
 
 import android.content.Context
 import android.os.Bundle
-import android.preference.PreferenceCategory
-import android.preference.PreferenceFragment
-import bzh.edgar.elevenfortysix.R
+import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceFragmentCompat
+import bzh.edgar.elevenfortysix.preferences.DialogPreferenceDialogHolder
 import bzh.edgar.elevenfortysix.preferences.TimeZoneNamePreference
 
-class SettingsFragment : PreferenceFragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val ctx: Context = activity
+        val ctx: Context = requireContext()
 
         addPreferencesFromResource(R.xml.preferences)
 
         // Adding a preference item for each timezone group
-        val category = preferenceManager.findPreference("category_timezones") as PreferenceCategory
+        val category = preferenceManager.findPreference<PreferenceCategory>("category_timezones")!!
         for (offsets in ClockSectors.sectors()) {
             // Used to build the timezone group name. i.e : UTC0 UTC12
             val builder = StringBuilder()
@@ -36,11 +37,24 @@ class SettingsFragment : PreferenceFragment() {
         }
 
         // TODO Remove when I'll add the possibility to change the hour
-        val catTime = preferenceManager.findPreference("category_time") as PreferenceCategory
+        val catTime = preferenceManager.findPreference<PreferenceCategory>("category_time")!!
         if (!BuildConfig.DEBUG) {
             catTime.isEnabled = false
-            catTime.title = catTime.title.toString() + " " + resources.getString(R.string.not_implemented)
+            catTime.title = "${catTime.title} ${resources.getString(R.string.not_implemented)}"
         }
     }
 
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {}
+
+    override fun onDisplayPreferenceDialog(preference: Preference?) {
+        when (preference) {
+            is DialogPreferenceDialogHolder -> {
+                val dialog = preference.newDialog()
+                dialog.arguments = Bundle(1).apply { putString("key", preference.key) }
+                dialog.setTargetFragment(this, 0)
+                dialog.show(parentFragmentManager, "")
+            }
+            else -> super.onDisplayPreferenceDialog(preference)
+        }
+    }
 }

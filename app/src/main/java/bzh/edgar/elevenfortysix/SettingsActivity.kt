@@ -6,14 +6,14 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import android.view.*
 import android.view.animation.AccelerateInterpolator
 import android.widget.LinearLayout
-import bzh.edgar.elevenfortysix.R
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import kotlin.math.max
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class SettingsActivity : AppCompatActivity() {
 
         supportActionBar!!.setTitle(R.string.settings)
 
-            val transaction = fragmentManager.beginTransaction()
+            val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment, SettingsFragment())
             transaction.commit()
 
@@ -76,7 +76,7 @@ class SettingsActivity : AppCompatActivity() {
     @SuppressLint("NewApi")
     fun revealActivity(x: Int, y: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val finalRadius = (Math.max(root.width, root.height) * 1.1).toFloat()
+            val finalRadius = (root.width.coerceAtLeast(root.height) * 1.1).toFloat()
 
             // create the animator for this view (the start radius is zero)
             val circularReveal = ViewAnimationUtils.createCircularReveal(root, x, y, 0f, finalRadius)
@@ -95,7 +95,7 @@ class SettingsActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             finish()
         } else {
-            val finalRadius = (Math.max(root.width, root.height) * 1.1).toFloat()
+            val finalRadius = (max(root.width, root.height) * 1.1).toFloat()
             val circularReveal = ViewAnimationUtils.createCircularReveal(
                     root, revealX, revealY, finalRadius, 0f)
 

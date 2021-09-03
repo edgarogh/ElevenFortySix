@@ -1,7 +1,5 @@
 package bzh.edgar.elevenfortysix
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -16,7 +14,7 @@ import com.danielstone.materialaboutlibrary.model.MaterialAboutList
 
 class AboutActivity : MaterialAboutActivity() {
 
-    override fun getActivityTitle(): CharSequence? = getString(R.string.about)
+    override fun getActivityTitle(): CharSequence = getString(R.string.about)
 
     override fun getMaterialAboutList(ctx: Context): MaterialAboutList {
 
@@ -129,7 +127,7 @@ class AboutActivity : MaterialAboutActivity() {
                         "2015",
                         "The Android Open Source Project"),
                 License("Color Picker",
-                        "https://github.com/jrummyapps/colorpicker",
+                        "https://github.com/jaredrummler/ColorPicker",
                         R.string.license_colorpicker,
                         "",
                         "Jared Rummler"),
