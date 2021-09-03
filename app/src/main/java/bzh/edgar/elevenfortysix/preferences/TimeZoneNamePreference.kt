@@ -1,11 +1,11 @@
-package fr.mranima.elevenfortysix.preferences
+package bzh.edgar.elevenfortysix.preferences
 
 import android.content.Context
 import android.preference.DialogPreference
 import android.util.AttributeSet
 import android.view.View
 import android.widget.EditText
-import fr.mranima.elevenfortysix.R
+import bzh.edgar.elevenfortysix.R
 
 class TimeZoneNamePreference(context: Context, attr: AttributeSet?) :
         DialogPreference(context, attr) {

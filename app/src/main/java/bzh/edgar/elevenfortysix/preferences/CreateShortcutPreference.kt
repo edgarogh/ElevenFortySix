@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix.preferences
+package bzh.edgar.elevenfortysix.preferences
 
 import android.content.Context
 import android.content.Intent
@@ -8,15 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-
-import fr.mranima.elevenfortysix.R
+import bzh.edgar.elevenfortysix.R
 
 class CreateShortcutPreference(context: Context, attrs: AttributeSet) : Preference(context, attrs) {
 
     init {
-
         widgetLayoutResource = R.layout.pref_time_picker
-
     }
 
     override fun onCreateView(parent: ViewGroup): View {

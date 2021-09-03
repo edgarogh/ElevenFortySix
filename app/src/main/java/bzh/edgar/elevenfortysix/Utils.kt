@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.content.Context
 import androidx.annotation.StringRes

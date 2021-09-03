@@ -1,5 +1,5 @@
 # 11:46
-[![GitHub license](https://img.shields.io/github/license/MrAnima/ElevenFortySix.svg)](https://github.com/MrAnima/ElevenFortySix/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/edgarogh/ElevenFortySix.svg)](https://github.com/edgarogh/ElevenFortySix/blob/master/LICENSE)
 > An Android app to show you where it is 11:46 in the world
 
 

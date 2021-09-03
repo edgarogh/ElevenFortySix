@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name" translatable="false">11:46</string>
-    <string name="app_repo_url" translatable="false">https://github.com/MrAnima/ElevenFortySix</string>
-    <string name="app_comments_url" translatable="false">https://github.com/MrAnima/ElevenFortySix/issues/new</string>
+    <string name="app_repo_url" translatable="false">https://github.com/edgarogh/ElevenFortySix</string>
+    <string name="app_comments_url" translatable="false">https://github.com/edgarogh/ElevenFortySix/issues/new</string>
 
     <string name="license_mdi" translatable="false">
         "Copyright © 2014, Austin Andrews (http://materialdesignicons.com/),
@@ -33,7 +33,13 @@
         limitations under the License."
     </string>
 
-    <string name="app_btc_addr" translatable="false">157Q5jFSvXubjDHGvKXB27bgW376s4QkRf</string>
+    <string name="license_icons8" translatable="false">
+        Icons8 icons are licensed under the following license:
+
+        https://icons8.com/vue-static/landings/pricing/icons8-license.pdf
+    </string>
+
+    <string name="app_paypal_url" translatable="false">https://paypal.me/edgarogh/</string>
 
     <string name="pref_time" translatable="false">TIME</string>
     <string name="pref_sector" translatable="false">SECTOR</string>

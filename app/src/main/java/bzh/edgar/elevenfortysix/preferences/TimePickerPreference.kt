@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix.preferences
+package bzh.edgar.elevenfortysix.preferences
 
 import android.content.Context
 import android.preference.DialogPreference

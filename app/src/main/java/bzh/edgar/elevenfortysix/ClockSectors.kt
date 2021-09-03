@@ -1,7 +1,8 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.content.Context
 import android.preference.PreferenceManager
+import bzh.edgar.elevenfortysix.R
 import java.util.*
 
 object ClockSectors {

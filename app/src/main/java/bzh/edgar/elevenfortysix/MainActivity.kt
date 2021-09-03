@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -13,6 +13,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import bzh.edgar.elevenfortysix.R
 import java.util.*
 
 class MainActivity : AppCompatActivity() {

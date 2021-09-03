@@ -17,7 +17,7 @@
     <string name="libraries">Libraries</string>
     <string name="author">Author</string>
     <string name="contributor">Contributor</string>
-    <string name="bitcoin" translatable="false">Bitcoin</string>
+    <string name="paypal" translatable="false">PayPal</string>
     <string name="message_copied">Copied !</string>
     <string name="comments">Comments</string>
     <string name="dst_summer">Summer time</string>

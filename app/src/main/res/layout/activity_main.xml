@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="fr.mranima.elevenfortysix.MainActivity">
+    tools:context="bzh.edgar.elevenfortysix.MainActivity">
     
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <fr.mranima.elevenfortysix.Clock
+    <bzh.edgar.elevenfortysix.Clock
         android:id="@+id/clock"
         android:layout_width="0dp"
         android:layout_height="0dp"

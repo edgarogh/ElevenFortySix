@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.content.Context
 import android.graphics.Canvas
@@ -11,6 +11,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
+import bzh.edgar.elevenfortysix.R
 import org.jetbrains.annotations.Contract
 import java.util.*
 

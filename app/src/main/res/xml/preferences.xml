@@ -5,12 +5,12 @@
         android:key="category_time"
         android:title="@string/time">
 
-        <fr.mranima.elevenfortysix.preferences.TimePickerPreference
+        <bzh.edgar.elevenfortysix.preferences.TimePickerPreference
             android:key="@string/pref_time"
             android:title="@string/change_time"
             android:icon="@drawable/ic_clock"/>
 
-        <fr.mranima.elevenfortysix.preferences.CreateShortcutPreference
+        <bzh.edgar.elevenfortysix.preferences.CreateShortcutPreference
             android:key="pref_static_field_key"
             android:selectable="false"
             android:persistent="false" />
@@ -87,8 +87,8 @@
             android:persistent="false">
 
             <intent
-                android:targetPackage="fr.mranima.elevenfortysix"
-                android:targetClass="fr.mranima.elevenfortysix.AboutActivity" />
+                android:targetPackage="bzh.edgar.elevenfortysix"
+                android:targetClass="bzh.edgar.elevenfortysix.AboutActivity" />
 
         </Preference>
 

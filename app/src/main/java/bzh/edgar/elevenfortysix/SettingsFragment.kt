@@ -1,10 +1,11 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.content.Context
 import android.os.Bundle
 import android.preference.PreferenceCategory
 import android.preference.PreferenceFragment
-import fr.mranima.elevenfortysix.preferences.TimeZoneNamePreference
+import bzh.edgar.elevenfortysix.R
+import bzh.edgar.elevenfortysix.preferences.TimeZoneNamePreference
 
 class SettingsFragment : PreferenceFragment() {
 

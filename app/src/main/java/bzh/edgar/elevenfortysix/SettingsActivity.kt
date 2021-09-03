@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.*
 import android.view.animation.AccelerateInterpolator
 import android.widget.LinearLayout
+import bzh.edgar.elevenfortysix.R
 
 class SettingsActivity : AppCompatActivity() {
 

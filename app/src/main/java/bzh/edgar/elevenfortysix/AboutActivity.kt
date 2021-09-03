@@ -1,4 +1,4 @@
-package fr.mranima.elevenfortysix
+package bzh.edgar.elevenfortysix
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -32,7 +32,7 @@ class AboutActivity : MaterialAboutActivity() {
                         .subText(BuildConfig.VERSION_NAME)
                         .icon(R.drawable.ic_info)
                         .setOnClickAction {
-                            openURL("https://github.com/MrAnima/ElevenFortySix/releases")
+                            openURL("https://github.com/edgarogh/ElevenFortySix/releases")
                         }
                         .build()
                 )
@@ -42,7 +42,7 @@ class AboutActivity : MaterialAboutActivity() {
         val author = MaterialAboutCard.Builder()
                 .title(R.string.author)
                 .addItem(MaterialAboutActionItem.Builder()
-                        .text("MrAnima")
+                        .text("Edgar Onghena")
                         .icon(R.drawable.ic_person)
                         .build()
                 )
@@ -50,20 +50,16 @@ class AboutActivity : MaterialAboutActivity() {
                         .text("GitHub")
                         .icon(R.drawable.ic_github_circle)
                         .setOnClickAction {
-                           openURL("https://github.com/MrAnima")
+                           openURL("https://github.com/edgarogh")
                         }
                         .build()
                 )
                 .addItem(MaterialAboutActionItem.Builder()
-                        .text(R.string.bitcoin)
-                        .subText(getString(R.string.app_btc_addr))
-                        .icon(R.drawable.ic_bitcoin)
+                        .text(R.string.paypal)
+                        .subText(getString(R.string.app_paypal_url))
+                        .icon(R.drawable.ic_paypal)
                         .setOnClickAction {
-                            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                            val clip = ClipData.newPlainText("Address",
-                                    getString(R.string.app_btc_addr))
-                            clipboard.setPrimaryClip(clip)
-                            toast(R.string.message_copied)
+                            openURL(getString(R.string.app_paypal_url))
                         }
                         .build()
                 )
@@ -147,7 +143,13 @@ class AboutActivity : MaterialAboutActivity() {
                         R.string.license_mdi,
                         "",
                         "Austin Andrews",
-                        R.drawable.ic_icon_list)
+                        R.drawable.ic_icon_list),
+                License("Icons8",
+                        "https://icons8.com/",
+                        R.string.license_icons8,
+                        "",
+                        "Icons8",
+                        R.drawable.ic_icon_list),
         )
 
     }
