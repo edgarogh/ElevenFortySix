@@ -9,11 +9,15 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.*
 import android.view.animation.AccelerateInterpolator
-import kotlinx.android.synthetic.main.activity_settings.*
+import android.widget.LinearLayout
 
 class SettingsActivity : AppCompatActivity() {
+
+    private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
+    private val root by lazy { findViewById<LinearLayout>(R.id.root) }
 
     private var revealX: Int = 0
     private var revealY: Int = 0

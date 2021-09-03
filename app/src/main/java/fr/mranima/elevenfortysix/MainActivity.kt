@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.LinearLayout
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
     private val backgroundColor: Int by lazy {
         ContextCompat.getColor(this, R.color.colorPrimary)
     }
+
+    private val root by lazy { findViewById<LinearLayout>(R.id.root) }
+    private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
+    private val clock by lazy { findViewById<Clock>(R.id.clock) }
 
     private var itemCenterX: Int = 0
     private var itemCenterY: Int = 0

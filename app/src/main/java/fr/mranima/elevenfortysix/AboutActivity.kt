@@ -62,7 +62,7 @@ class AboutActivity : MaterialAboutActivity() {
                             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                             val clip = ClipData.newPlainText("Address",
                                     getString(R.string.app_btc_addr))
-                            clipboard.primaryClip = clip
+                            clipboard.setPrimaryClip(clip)
                             toast(R.string.message_copied)
                         }
                         .build()
