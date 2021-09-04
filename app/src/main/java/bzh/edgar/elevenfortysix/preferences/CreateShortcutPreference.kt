@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import bzh.edgar.elevenfortysix.R
+import bzh.edgar.elevenfortysix.Time
 
 @RequiresApi(Build.VERSION_CODES.O)
 class CreateShortcutPreference(context: Context, attrs: AttributeSet) : Preference(context, attrs) {
@@ -29,11 +30,13 @@ class CreateShortcutPreference(context: Context, attrs: AttributeSet) : Preferen
         val launchIntent = context.packageManager
                 .getLaunchIntentForPackage(context.packageName)!!
 
+        val time = Time.fromSharedPreferences(context, R.string.pref_time).toString()
+
         val shortcutManager = context.getSystemService(ShortcutManager::class.java)
         shortcutManager.requestPinShortcut(
-                ShortcutInfo.Builder(context, "29:90")
+                ShortcutInfo.Builder(context, time)
                         .setIntent(launchIntent)
-                        .setShortLabel("29:90")
+                        .setShortLabel(time)
                         .setIcon(Icon.createWithResource(context, R.mipmap.ic_launcher))
                         .build(),
                 null)

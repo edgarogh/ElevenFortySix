@@ -35,13 +35,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
             category.addPreference(e)
         }
-
-        // TODO Remove when I'll add the possibility to change the hour
-        val catTime = preferenceManager.findPreference<PreferenceCategory>("category_time")!!
-        if (!BuildConfig.DEBUG) {
-            catTime.isEnabled = false
-            catTime.title = "${catTime.title} ${resources.getString(R.string.not_implemented)}"
-        }
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {}

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TimePicker
 import androidx.preference.DialogPreference
 import androidx.preference.PreferenceDialogFragmentCompat
+import bzh.edgar.elevenfortysix.Time
 
 class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPreference(context, attrs), DialogPreferenceDialogHolder {
 
@@ -21,30 +22,6 @@ class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPrefer
     }
 
     override fun newDialog(): PreferenceDialogFragmentCompat = Dialog(this)
-
-    private class Time {
-        var time: Int = 0
-            internal set
-
-        val hour: Int
-            get() = time / 60
-
-        val minute: Int
-            get() = time % 60
-
-        constructor(time: Int) {
-            this.time = time
-        }
-
-        constructor(hour: Int, minute: Int) {
-            this.time = 60 * hour + minute
-        }
-
-        val hourString get() = hour.toString().padStart(2, '0')
-        val minuteString get() = minute.toString().padStart(2, '0')
-
-        override fun toString(): String = "$hourString:$minuteString"
-    }
 
     class Dialog(private val preference: TimePickerPreference) : PreferenceDialogFragmentCompat() {
         private val picker by lazy { TimePicker(context).apply { setIs24HourView(true) } }

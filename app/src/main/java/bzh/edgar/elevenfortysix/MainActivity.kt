@@ -1,28 +1,32 @@
 package bzh.edgar.elevenfortysix
 
+import android.annotation.SuppressLint
+import android.app.PictureInPictureParams
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Color
 import android.graphics.Rect
+import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.Spanned
+import android.text.style.StrikethroughSpan
+import android.util.Rational
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
     private var timer: Timer? = null
-    private val backgroundColor: Int by lazy {
-        ContextCompat.getColor(this, R.color.colorPrimary)
-    }
 
-    private val root by lazy { findViewById<LinearLayout>(R.id.root) }
     private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
     private val clock by lazy { findViewById<Clock>(R.id.clock) }
 
@@ -32,8 +36,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setSupportActionBar(toolbar)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (isInPictureInPictureMode) {
+                toolbar.visibility = View.GONE
+            } else {
+                toolbar.visibility = View.VISIBLE
+            }
+
+            clock.setOnLongClickListener {
+                enterPictureInPictureMode(PIP_PARAMS)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,21 +85,25 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onMultiWindowModeChanged(isInMultiWindowMode: Boolean, config: Configuration) {
-        toolbar.visibility = if (isInMultiWindowMode) View.GONE else View.VISIBLE
-        super.onMultiWindowModeChanged(isInMultiWindowMode, config)
-    }
-
-    override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean,
-                                               config: Configuration) {
-        super.onPictureInPictureModeChanged(isInPictureInPictureMode, config)
-        root.setBackgroundColor(if (isInPictureInPictureMode) Color.TRANSPARENT else backgroundColor)
+    override fun onPictureInPictureModeChanged(
+        isInPictureInPictureMode: Boolean,
+        newConfig: Configuration
+    ) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        toolbar.visibility = if (isInPictureInPictureMode) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
     }
 
     override fun onStart() {
         super.onStart()
 
         clock.redraw()
+
+        updateTitle()
+
         timer = Timer()
         timer?.schedule(1000) {
             runOnUiThread { clock.redraw() }
@@ -99,6 +118,48 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         clock.update()
+        updateTitle()
+    }
+
+    private fun updateTitle() {
+        val time = Time.fromSharedPreferences(this, R.string.pref_time)
+            .run {
+                if (this == Time.DEFAULT) {
+                    null
+                } else {
+                    this
+                }
+            }
+
+        var textView: AppCompatTextView? = null
+        for (i in 0 until toolbar.childCount) {
+            val child = toolbar.getChildAt(i)
+            if (child is AppCompatTextView) {
+                textView = child
+            }
+        }
+
+        if (time == null) {
+            toolbar.title = Time.DEFAULT.toString()
+        } else {
+            toolbar.title = time.toString()
+            @SuppressLint("SetTextI18n")
+            if (textView != null) {
+                textView.setText("${Time.DEFAULT} $time", TextView.BufferType.SPANNABLE)
+                (textView.text as Spannable).setSpan(
+                    StrikethroughSpan(), // TODO hide from accessibility tools
+                    0,
+                    5,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE,
+                )
+            }
+        }
+    }
+
+    companion object {
+        @RequiresApi(Build.VERSION_CODES.O)
+        private val PIP_PARAMS =
+            PictureInPictureParams.Builder().setAspectRatio(Rational(1, 1)).build()
     }
 
 }

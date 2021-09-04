@@ -20,6 +20,7 @@
         <activity
             android:name="bzh.edgar.elevenfortysix.MainActivity"
             android:theme="@style/AppTheme.Main"
+            android:supportsPictureInPicture="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

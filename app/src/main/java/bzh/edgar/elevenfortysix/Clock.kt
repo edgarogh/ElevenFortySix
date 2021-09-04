@@ -30,9 +30,6 @@ class Clock : View {
 
     }
 
-    private val hour = 11
-    private val minute = 46
-
     private var dst: Boolean = false
 
     constructor(context: Context) : super(context)
@@ -40,6 +37,9 @@ class Clock : View {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+
+    private var hour = 11
+    private var minute = 46
 
     init {
         update()
@@ -72,6 +72,11 @@ class Clock : View {
 
         dst = PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(resources.getString(R.string.pref_dst), dst)
+
+        Time.fromSharedPreferences(context, R.string.pref_time).let {
+            hour = it.hour.mod(12)
+            minute = it.minute
+        }
     }
 
     fun redraw() {
