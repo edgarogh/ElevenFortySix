@@ -12,7 +12,7 @@ class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPrefer
     private val savedTime: Time
         get() = Time(getPersistedInt(Time(11, 46).time))
 
-    init {
+    override fun onAttached() {
         setTime(savedTime)
     }
 
@@ -40,7 +40,10 @@ class TimePickerPreference(context: Context, attrs: AttributeSet) : DialogPrefer
             this.time = 60 * hour + minute
         }
 
-        override fun toString(): String = "$hour:$minute"
+        val hourString get() = hour.toString().padStart(2, '0')
+        val minuteString get() = minute.toString().padStart(2, '0')
+
+        override fun toString(): String = "$hourString:$minuteString"
     }
 
     class Dialog(private val preference: TimePickerPreference) : PreferenceDialogFragmentCompat() {
