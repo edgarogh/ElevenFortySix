@@ -22,7 +22,7 @@ class AboutActivity : MaterialAboutActivity() {
         val appCard = MaterialAboutCard.Builder()
                 .addItem(MaterialAboutTitleItem.Builder()
                         .text(R.string.app_name)
-                        .icon(R.drawable.ic_launcher_background)
+                        .icon(R.drawable.ic_launcher_foreground)
                         .build()
                 )
                 .addItem(MaterialAboutActionItem.Builder()
