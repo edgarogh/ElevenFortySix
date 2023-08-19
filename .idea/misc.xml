@@ -11,6 +11,12 @@
       </map>
     </option>
   </component>
+  <component name="EntryPointsManager">
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="org.junit.AfterClass" />
+      <item index="1" class="java.lang.String" itemvalue="org.junit.BeforeClass" />
+    </list>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
